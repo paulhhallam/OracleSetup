@@ -17,9 +17,9 @@ Oracle or RedHat linux
 ### Chef
 - Chef 12.0 or later
 
-### Cookbooks
+### Cookbooks TO DO
 - `toaster` - cf_Oracle_Mgmt_scripts needs toaster to brown your bagel.
-## Attributes
+## Attributes TO DO 
 TODO: List your cookbook attributes here.
 e.g.
 ### cf_Oracle_Mgmt_scripts::default
