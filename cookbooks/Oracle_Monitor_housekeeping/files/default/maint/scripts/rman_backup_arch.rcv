@@ -1,0 +1,7 @@
+run {
+sql "alter system archive log current";
+sql "alter system archive log current";
+sql "alter system archive log current";
+configure channel device type disk format '${DATA_DIR}/${Dstamp}/%d_arch_%U.arc_bkp';
+BACKUP AS COMPRESSED BACKUPSET ARCHIVELOG ALL NOT BACKED UP 1 TIMES;
+}

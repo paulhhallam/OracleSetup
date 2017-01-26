@@ -1,0 +1,20 @@
+run {
+sql "create pfile = ''${DATA_DIR}/${Dstamp}/init${ORACLE_SID}.ora'' from spfile";
+sql "alter database backup controlfile to trace as ''${DATA_DIR}/${Dstamp}/controlfile.trc'' reuse";
+sql "alter system archive log current";
+}
+CONFIGURE CONTROLFILE AUTOBACKUP FORMAT FOR DEVICE TYPE DISK TO '${DATA_DIR}/${Dstamp}/cont_%F';
+run {
+configure channel device type disk format '${DATA_DIR}/${Dstamp}/%d_%U';
+backup as compressed backupset database plus archivelog not backed up 1 times;
+}
+
+allocate channel for maintenance type disk;
+crosscheck backup;
+crosscheck archivelog all;
+delete noprompt expired backup;
+delete noprompt expired archivelog all;
+report obsolete;
+delete noprompt obsolete;
+delete noprompt archivelog until time 'SYSDATE-8';
+release channel;
