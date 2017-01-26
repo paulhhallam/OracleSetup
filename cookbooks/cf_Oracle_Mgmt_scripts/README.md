@@ -7,7 +7,9 @@ This cookbook will create the files and directory structutres used by the CashFl
 ## Requirements
 
 The oracle user with the home directory of /home/oracle must exist.
+
 The oinstall group must exist.
+
 The /u01/maint and /backup/oracle volumes or directories should already exist although this process will create them if they do not.
 The issue here is that normally /backup and /u01 are seperate volumes and running this script before the volumes are created may cause some confusion.
 ### Platforms
