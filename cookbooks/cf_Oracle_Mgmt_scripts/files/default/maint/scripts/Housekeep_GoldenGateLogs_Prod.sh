@@ -47,7 +47,7 @@ LOG=${HKLOGS}/GG_housekeep_${DATABASE}_${Dstamp}.out
 MAIL_SUBJ=" $HOSTNAME ${DATABASE} Golden Gate LOG: "
 MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 
-trap "echo 'Housekeep_GoldenGateLogs for $DATABASE failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_GoldenGateLogs for $DATABASE failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
+trap "echo 'Housekeep_GoldenGateLogs failed for $DATABASE on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_GoldenGateLogs for $DATABASE failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 
 GG
 exec >> $LOG 2>&1

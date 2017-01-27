@@ -8,6 +8,11 @@
 # BUT the problem here is that the instance number does not have to be the same for 
 # all instances on a host.
 #
+#MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
+MAIL_RECIPIENT="paul.hallam@cashflows.com"
+
+trap "echo 'Housekeep_Listener_logs failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_Listener_logs failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
+
 shopt -s expand_aliases
 export Dstamp=`date +%F_%T`
 #
@@ -122,4 +127,4 @@ do
 #
 done
 
-
+trap - INT TERM EXIT

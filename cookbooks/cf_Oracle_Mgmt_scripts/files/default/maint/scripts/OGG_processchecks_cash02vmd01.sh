@@ -41,6 +41,9 @@ EMAIL_LIST="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 host=`hostname`
 timeSuffix=`date +%F`
 gghome=/backup/oracle/OGG
+
+trap "echo 'OGG_processchecks failed on $HOSTNAME ' $HOSTNAME | mail -s 'OGG_processchecks failed on $HOSTNAME ' $EMAIL_LIST" INT TERM EXIT
+
 #
 #================ CHECKING FOR MANAGER ==============================
 #
@@ -75,3 +78,4 @@ check_extr DWHCNREP /backup/oracle/OGG
 #
 ##<><><><><><><><<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
+trap - INT TERM EXIT

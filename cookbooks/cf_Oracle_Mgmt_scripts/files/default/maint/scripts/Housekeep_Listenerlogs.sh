@@ -47,6 +47,10 @@ export LOG_DIR=i/u01/maint/logs/Housekeeplogs/
 LOG=${LOG_DIR}/DB_housekeep_${DATABASE}_LOGS_${Dstamp}.out
 MAIL_SUBJ=" $HOSTNAME ${DATABASE} Housekeeping trace LOG: "
 #MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
+MAIL_RECIPIENT="paul.hallam@cashflows.com"
+
+trap "echo 'Housekeep_Listenerlogs failed for $DATABASE on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_Listenerlogs failed for $DATABASE on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
+
 AL
 exec >> $LOG 2>&1
 
@@ -69,3 +73,4 @@ find backuplogs -name '*' -mtime +14 -exec rm {} \;
 
 find ${LOG_DIR}/ -name 'DB_housekeep_${DATABASE}_LOGS_*.out' -mtime +7 -exec rm {} \;
 
+trap - INT TERM EXIT

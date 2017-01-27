@@ -24,6 +24,8 @@ ggcentral=/backup/oracle/OGG/central
 ggaccounts=/backup/oracle/OGG/accounts
 ggendpoint=/backup/oracle/OGG/endpoint
 
+trap "echo 'OGG_processchecks failed on $HOSTNAME ' $HOSTNAME | mail -s 'OGG_processchecks failed on $HOSTNAME ' $EMAIL_LIST" INT TERM EXIT
+
 #================ CHECKING FOR ACCOUNTS MANAGER ==============================
 
 check_mgr1=`ps -ef|grep mgr | grep accounts|grep -v "grep mgr"|wc -l`;
@@ -196,6 +198,6 @@ find $ggendpoint/maint/ -name 'dwhepdp_*.out' -mtime +7 -exec rm {} \;
 #
 #
 
-
+trap - INT TERM EXIT
 
 

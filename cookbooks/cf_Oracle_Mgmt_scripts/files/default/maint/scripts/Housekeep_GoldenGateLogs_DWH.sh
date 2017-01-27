@@ -1,7 +1,7 @@
 #!/bin/bash
 #######################################################################
 # Script to cleanup oracle Golden Gate error log weekly.
-# Check GG_${DATABASE}_yyyy_mm_dd.log for issues.
+# Check /u01/maint/logs/GG_${DATABASE}_yyyy_mm_dd.log for issues.
 #
 #######################################################################
 #       Date Written: 16 September 2016  Author: P Hallam
@@ -42,6 +42,7 @@ DATABASE=$1
 SCRIPT_DIR=/u01/maint/scripts/
 
 export Dstamp=`date +%F_%T`
+export LOG_DIR=/u01/maint/logs/Housekeeplogs/
 HKLOGS=/backup/oracle/logs/GG/${DATABASE}
 LOG=${HKLOGS}/GG_housekeep_${DATABASE}_${Dstamp}.out
 MAIL_SUBJ=" $HOSTNAME ${DATABASE} Golden Gate LOG: "

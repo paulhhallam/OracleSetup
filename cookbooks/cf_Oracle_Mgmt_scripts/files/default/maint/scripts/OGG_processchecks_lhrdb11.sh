@@ -22,6 +22,8 @@ ggacounts=/backup/oracle/OGG/accounts
 ggendpoint=/backup/oracle/OGG/endpoint
 ggcentral=/backup/oracle/OGG/central
 
+trap "echo 'OGG_processchecks failed on $HOSTNAME ' $HOSTNAME | mail -s 'OGG_processchecks failed on $HOSTNAME ' $EMAIL_LIST" INT TERM EXIT
+
 #================ CHECKING FOR ACCOUNTS MANAGER ==============================
 
 check_mgr1=`ps -ef|grep mgr | grep accounts|grep -v "grep mgr"|wc -l`;
@@ -146,4 +148,4 @@ find $ggcentral/maint/ -name 'LH11CNDP_*.out' -mtime +7 -exec rm {} \;
 #
 #==============================================================================
 
-
+trap - INT TERM EXIT
