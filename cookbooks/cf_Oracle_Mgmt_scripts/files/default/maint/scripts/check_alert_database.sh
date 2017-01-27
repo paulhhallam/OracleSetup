@@ -64,7 +64,8 @@ if [ $USER = $ASM_OWNER ]; then
    echo '####################################################' >> $LOG
    echo ''  >> $LOG
    echo $adrci_home' Alert Log' >> $LOG
-   adrci exec="set home ${adrci_home}; show alert -p \\\"message_text like '%ORA-%' and originating_timestamp > systimestamp-10/1440\\\"" -term >> $LOG
+    adrci exec="set home ${adrci_home}; show alert -p ""message_text like '%ORA-%' and originating_timestamp > systimestamp-10/1440"" " -term >> $LOG
+#   adrci exec="set home diag/rdbms/central/central; show alert -p ""message_text like '%ORA-%' and originating_timestamp > systimestamp-10/1440"" " -term
    num_errors=`grep -c -e 'TNS' -e 'ORA' $LOG`
    if [ $num_errors != 0 ]
    then
@@ -106,7 +107,8 @@ do
     echo '####################################################' >> $LOG
     echo ''  >> $LOG
     echo $adrci_home' Alert Log' >> $LOG
-    adrci exec="set home ${adrci_home}; show alert -p \\\"message_text like '%ORA-%' and originating_timestamp > systimestamp-10/1440\\\"" -term >> $LOG
+#    adrci exec="set home ${adrci_home}; show alert -p \\\"message_text like '%ORA-%' and originating_timestamp > systimestamp-10/1440\\\"" -term >> $LOG
+    adrci exec="set home ${adrci_home}; show alert -p ""message_text like '%ORA-%' and originating_timestamp > systimestamp-10/1440"" " -term >> $LOG
     num_errors=`grep -c -e 'TNS' -e 'ORA' $LOG`
     if [ $num_errors != 0 ]
     then

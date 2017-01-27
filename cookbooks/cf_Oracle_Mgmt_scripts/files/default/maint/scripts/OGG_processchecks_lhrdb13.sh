@@ -110,7 +110,7 @@ check_ext1=`ps -ef|grep AMSACDP|grep -v "grep AMSACDP"|wc -l`;
 check_num1=`expr $check_ext1`
 if [ $check_num1 -le 0 ]
    then
-        echo "GoldenGate Accounts pump AMSAC DP is down on $host." > $ggacounts/maint/AMSACDP_$timeSuffix.out
+        echo "GoldenGate Accounts pump AMSACDP is down on $host." > $ggacounts/maint/AMSACDP_$timeSuffix.out
         tail -30 $ggacounts/ggserr.log >> $ggacounts/maint/AMSACDP_$timeSuffix.out
         mail -s "GoldenGate AMSACDP Down on $host" $EMAIL_LIST < $ggacounts/maint/AMSACDP_$timeSuffix.out
 fi
@@ -182,5 +182,6 @@ if [ $check_num7 -le 0 ]
         mail -s "GoldenGate LH13CNEX Down on $host" $EMAIL_LIST < $ggcentral/maint/LH13CNEX_$timeSuffix.out
 fi
 
-find $ggcentral/maint/ -name 'LH13CNEX_*.out' -mtime +7 -exe
+find $ggcentral/maint/ -name 'LH13CNEX_*.out' -mtime +7 -exec rm {} \;
+
 

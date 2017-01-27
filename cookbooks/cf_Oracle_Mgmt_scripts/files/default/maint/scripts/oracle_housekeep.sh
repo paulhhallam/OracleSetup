@@ -1,7 +1,7 @@
 #!/bin/bash
 #######################################################################
 # Script to cleanup oracle logs daily.
-# Check /u01/maint/logs/housekeeping/${DATABASE}/altlog_${DATABASE}_yyyy_mm_dd.log for issues.
+# Check ${DATABASE}/altlog_${DATABASE}_yyyy_mm_dd.log for issues.
 #
 #######################################################################
 #       Date Written: 16 September 2016  Author: P Hallam

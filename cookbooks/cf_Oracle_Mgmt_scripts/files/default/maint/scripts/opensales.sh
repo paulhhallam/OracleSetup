@@ -31,6 +31,6 @@ echo $RESP
 
 if [ $RESP -gt 0 ]
 then
-        uuencode /u01/maint/logs/monitorlogs/endpoint/opensales.txt opensales.txt | mail -s "${MAIL_SUBJ} $RESP message/s older than 1 hour in open_sales " $MAIL_RECIPIENT
+        uuencode /backup/oracle/logs/monitorlogs/endpoint/opensales.txt opensales.txt | mail -s "${MAIL_SUBJ} $RESP message/s older than 1 hour in open_sales " $MAIL_RECIPIENT
         exit 0
 fi

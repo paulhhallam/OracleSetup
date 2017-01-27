@@ -1,7 +1,7 @@
 #!/bin/bash
 #######################################################################
 # Script to cleanup oracle trace logs weekly.
-# Check /u01/maint/logs/GG_${DATABASE}_yyyy_mm_dd.log for issues.
+# Check GG_${DATABASE}_yyyy_mm_dd.log for issues.
 #
 #######################################################################
 #       Date Written: 16 September 2016  Author: P Hallam

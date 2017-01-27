@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 #######################################################################
 #       Script to change the settle_batch_id to NULL for the auto representments
 #       Run from oracle crontab at 9:30 PM.
@@ -13,14 +13,14 @@
 #
 . /home/oracle/central.env
 MAIL_SUBJ="AUTO REPRESETMENT JOB STATUS:"
-LOG_DIR=/u01/maint/logs/monitorlogs/central
+LOG_DIR=/backup/oracle/logs/monitorlogs/central
 timeSuffix=`date +%F`
 LOGFILE=$LOG_DIR/autorepstatus_$timeSuffix.log
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com,majdi.mgaidia@cashflows.com"
-#MAIL_RECIPIENT="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com,alex.tull@cashflows.com,majdi.mgaidia@cashflows.com"
+#MAIL_RECIPIENT="ananth.shenoy@cashflows.com,majdi.mgaidia@cashflows.com"
+MAIL_RECIPIENT="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com,alex.tull@cashflows.com,majdi.mgaidia@cashflows.com"
 
 RUNNING=`sqlplus -s <<!
-monitor_user/M0n1tor
+monitor_user/bSLVTZcMVPig_a2FYvC
 set heading off;
 set feedback off;
 set recsep off;
@@ -31,7 +31,7 @@ exit;
 !`
 
 SUCESS=`sqlplus -s <<!
-monitor_user/M0n1tor
+monitor_user/bSLVTZcMVPig_a2FYvC
 set heading off;
 set feedback off;
 set recsep off;
@@ -43,14 +43,14 @@ exit;
 
 if [ $RUNNING -gt 0 ]
 then
-	STATUS="RUNNING"
+        STATUS="RUNNING"
         echo $STATUS | mail -s "$MAIL_SUBJ $STATUS " $MAIL_RECIPIENT
         exit 0
 fi
-		
+
 if [ $SUCESS -ge 1 ]
 then
-	STATUS="SUCCEDED"
+        STATUS="SUCCEDED"
         echo $STATUS | mail -s "$MAIL_SUBJ $STATUS " $MAIL_RECIPIENT
         exit 0
 fi

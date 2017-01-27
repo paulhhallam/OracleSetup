@@ -8,7 +8,7 @@ Set trimspool on
 set echo off
 set verify off
 set und off
-spool /u01/maint/logs/trans_stats/&3
+spool /backup/oracle/logs/trans_stats/&3
 
 select extract(year from tran_time) YEAR, extract(month from tran_time) MOY, extract(day from tran_time) DOM, merchant_id,store_id
         case

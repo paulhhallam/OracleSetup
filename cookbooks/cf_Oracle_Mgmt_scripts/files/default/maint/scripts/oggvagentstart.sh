@@ -18,9 +18,13 @@ EMAIL_LIST="ananth.shenoy@cashflows.com"
 #EMAIL_LIST="paul.hallam@cashflows.com"
 host=`hostname`
 timeSuffix=`date +%F_%T`
-accountslogfile=/u01/maint/logs/agent/strtagnt_acc_$timeSuffix.txt
-endpointlogfile=/u01/maint/logs/agent/strtagnt_enp_$timeSuffix.txt
-centrallogfile=/u01/maint/logs/agent/strtagnt_cnt_$timeSuffix.txt
+#accountslogfile=/u01/maint/logs/agent/strtagnt_acc_$timeSuffix.txt
+#endpointlogfile=/u01/maint/logs/agent/strtagnt_enp_$timeSuffix.txt
+#centrallogfile=/u01/maint/logs/agent/strtagnt_cnt_$timeSuffix.txt
+accountslogfile=/backup/oracle/logs/agent/strtagnt_acc_$timeSuffix.txt
+endpointlogfile=/backup/oracle/logs/agent/strtagnt_enp_$timeSuffix.txt
+centrallogfile=/backup/oracle/logs/agent/strtagnt_cnt_$timeSuffix.txt
+
 ggaacounts=/backup/oracle/GGVA/accounts
 ggaendpoint=/backup/oracle/GGVA/endpoint
 ggacentral=/backup/oracle/GGVA/central
@@ -74,3 +78,5 @@ if [ $check_cnt_ag -le 0 ]
 fi
 
 find /u01/maint/logs/agent/ -name 'strtagnt_*.txt' -mtime +7 -exec rm {} \;
+find /backup/oracle/logs/agent/ -name 'strtagnt_*.txt' -mtime +7 -exec rm {} \;
+
