@@ -67,7 +67,8 @@ if [ $USER = $ASM_OWNER ]; then
          test -d $HKLOGS || mkdir -p $HKLOGS
 #
 # --Save the listener log file in backuplogs and then clean it out
-         cp $LSNR_LOG_DIR/trace/$LSNR_LOG_NAME.log $HKLOGS/
+         cp $LSNR_LOG_DIR/trace/$LSNR_LOG_NAME.log $HKLOGS/$LSNR_LOG_NAME.log_$Dstamp
+#        cp $LSNR_LOG_DIR/trace/$LSNR_LOG_NAME.log $HKLOGS/
          cat /dev/null > $LSNR_LOG_NAME.log
          find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
       fi
@@ -118,7 +119,7 @@ do
         test -d $HKLOGS || mkdir -p $HKLOGS
 #
 # --Save the listener log file in backuplogs and then clean it out
-        cp $LSNR_LOG_DIR/trace/$LSNR_LOG_NAME.log $HKLOGS/
+        cp $LSNR_LOG_DIR/trace/$LSNR_LOG_NAME.log $HKLOGS/$LSNR_LOG_NAME.log_$Dstamp
         cat /dev/null > $LSNR_LOG_NAME.log
         find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
       fi
@@ -127,4 +128,6 @@ do
 #
 done
 
+# end the error trap
 trap - INT TERM EXIT
+

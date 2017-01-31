@@ -186,4 +186,6 @@ fi
 
 find $ggcentral/maint/ -name 'LH13CNEX_*.out' -mtime +7 -exec rm {} \;
 
+# End the error trap
 trap - INT TERM EXIT
+

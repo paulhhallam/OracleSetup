@@ -196,8 +196,8 @@ fi
 
 find $ggendpoint/maint/ -name 'dwhepdp_*.out' -mtime +7 -exec rm {} \;
 #
-#
 
+# End the error trap
 trap - INT TERM EXIT
 
 

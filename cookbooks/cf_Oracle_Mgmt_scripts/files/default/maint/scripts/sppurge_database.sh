@@ -41,6 +41,8 @@ MAIL_SUBJ=" $HOSTNAME ${DATABASE} STATSPACK CLEANUP COMPLETED: "
 #MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 MAIL_RECIPIENT="paul.hallam@cashflows.com"
 LOG=/backup/oracle/logs/SPpurge/SPpurge_${DATABASE}.log
+cd /backup/oracle/logs/SPpurge
+
 exec >> $LOG 2>&1
 
 HOST_NAME=`hostname -a`

@@ -123,5 +123,5 @@ do
     rm $LOG
   fi
 done
-
+# End the error trap
 trap - INT TERM EXIT

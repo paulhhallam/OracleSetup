@@ -137,4 +137,5 @@ EOF1`
   fi
 done
 
+# end the error trap
 trap - INT TERM EXIT

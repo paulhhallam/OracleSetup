@@ -49,20 +49,23 @@ MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 
 trap "echo 'Housekeep_GoldenGateLogs failed for $DATABASE on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_GoldenGateLogs for $DATABASE failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 
+echo "LOGS go to $HKLOGS"
+
 GG
 exec >> $LOG 2>&1
 
 HOST_NAME=`hostname -a`
 test -d $HKLOGS || mkdir -p $HKLOGS
-cp -p ggserr.log $HKLOGS/ggserr.log.${Dstamp}_bkp
+cp -p ggserr.log $HKLOGS/ggserr.log.${Dstamp}
 cat /dev/null > ggserr.log
 #
 #--------------- Deleting error log files ----------------
 #
 echo "ggserr.log maintained" >> $LOG
 
-find $HKLOGS/ -name 'ggserr.log.*_bkp' -mtime +7 -exec rm {} \;
+find $HKLOGS/ -name 'ggserr.log.*' -mtime +7 -exec rm {} \;
 
 find ${HKLOGS}/ -name 'GG_housekeep_${DATABASE}_*.out' -mtime +7 -exec rm {} \;
 
+# End of the error trap
 trap - INT TERM EXIT

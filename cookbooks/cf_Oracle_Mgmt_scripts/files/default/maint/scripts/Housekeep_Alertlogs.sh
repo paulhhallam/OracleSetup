@@ -56,7 +56,7 @@ EOF1`
    cd $DIAG_DEST
    HKLOGS=/backup/oracle/logs/ALERT/ASM
    test -d $HKLOGS || mkdir -p $HKLOGS
-   mv alert_${ORACLE_SID}.log $HKLOGS/alert_${ORACLE_SID}.log.${Dstamp}_bkp
+   mv alert_${ORACLE_SID}.log $HKLOGS/alert_${ORACLE_SID}.log.${Dstamp}
    find -name '*.tr*' -mtime +7 | xargs -Ifile mv file $HKLOGS/file
 #
 # tar and gzip the new files
@@ -106,7 +106,7 @@ EOF1`
 #
 # Move the files to the backup directory
 #
-    mv alert_${ORACLE_SID}.log $HKLOGS/alert_${ORACLE_SID}.log.${Dstamp}_bkp
+    mv alert_${ORACLE_SID}.log $HKLOGS/alert_${ORACLE_SID}.log.${Dstamp}
     find . -name '*.tr*' -mtime +7 | xargs -Ifile mv file $HKLOGS/file
 #
 # tar and gzip the new files
@@ -125,4 +125,6 @@ EOF1`
 #
 done
 
+# end the error trap
 trap - INT TERM EXIT
+
