@@ -89,4 +89,3 @@ EOF
 done
 
 find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
-
