@@ -50,3 +50,5 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+
+cookbooks/cf_Oracle_Mgmt_scripts/recipes/default.rb.$$$

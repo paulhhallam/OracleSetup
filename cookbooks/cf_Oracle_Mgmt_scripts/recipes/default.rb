@@ -84,3 +84,11 @@ file "/u01/maint/scripts/OGG_processchecks.sh" do
   action :create
 end
 
+file "/u01/maint/scripts/TSdatabasecheck.sh" do
+  content "maint/scripts/TSdatabasecheck_#{node["hostname"]}.sh"
+  owner 'oracle'
+  group 'oinstall'
+  mode '0775'
+  action :create
+end
+
