@@ -92,3 +92,11 @@ file "/u01/maint/scripts/TSdatabasecheck.sh" do
   action :create
 end
 
+file "/u01/maint/scripts/Housekeep_GoldenGateLogs" do
+  content "maint/scripts/Housekeep_GoldenGateLogs_#{node["role"]}.sh"
+  owner 'oracle'
+  group 'oinstall'
+  mode '0775'
+  action :create
+end
+
