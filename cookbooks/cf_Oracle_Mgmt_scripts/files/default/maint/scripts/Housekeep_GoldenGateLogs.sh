@@ -13,38 +13,16 @@
 #
 #######################################################################
 
-shopt -s expand_aliases
+echo "cfedwh and cfebidemo and staging"
+prefix="cfedwh"
+. ~/cfedwh.env
 
-case $1 in
-    accounts)
-      echo "accounts"
-      prefix="cf_acc"
-      . ~/accounts.env
-      ;;
-    central)
-      echo "central"
-      prefix="central"
-      . ~/central.env
-      ;;
-    endpoint)
-      echo "endpoint"
-      prefix="vcg_endpoint"
-      . ~/endpoint.env
-      ;;
-    *)
-      echo "*** ERROR - Incorrect Parameter or No parameter supplied ***"
-      echo "*** Error - Valid parameters are : accounts central endpoint ***"
-      exit 1
-      ;;
-esac
-
-DATABASE=$1
 SCRIPT_DIR=/u01/maint/scripts/
 
 export Dstamp=`date +%F_%T`
-HKLOGS=/backup/oracle/logs/GG/${DATABASE}
-LOG=${HKLOGS}/GG_housekeep_${DATABASE}_${Dstamp}.out
-MAIL_SUBJ=" $HOSTNAME ${DATABASE} Golden Gate LOG: "
+HKLOGS=/backup/oracle/logs/GG
+LOG=${HKLOGS}/GG_housekeep_${Dstamp}.out
+MAIL_SUBJ=" $HOSTNAME Golden Gate LOG: "
 MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 
 trap "echo 'Housekeep_GoldenGateLogs for $DATABASE failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_GoldenGateLogs for $DATABASE failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT

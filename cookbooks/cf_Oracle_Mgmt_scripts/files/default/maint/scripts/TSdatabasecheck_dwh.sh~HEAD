@@ -18,6 +18,7 @@
 #
 #
 shopt -s expand_aliases
+shopt -s nocasematch
 export Dstamp=`date +%F_%T`
 #
 . ~/.bash_profile
@@ -28,10 +29,36 @@ do
 #
   DB_OWNER=$(ps -ef |grep $DATABASES |grep -v ASM |grep -v MGMTDB|grep ora_pmon| awk {'print $1'} )
   if [ $USER = $DB_OWNER ]; then
-    export DB=$(echo $DATABASES |sed '$s/.$//')
-    export ORACLE_SID=$DATABASES
-    export ORAENV_ASK=NO
-    . oraenv -s
+#   MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
+    MAIL_RECIPIENT="paul.hallam@cashflows.com"
+
+    case "$DATABASES" in
+      dwcfstg)
+        echo "staging"
+        prefix="dwcfstg"
+        . ~/staging.env
+        percentage=90
+      ;;
+      cfedwh)
+        echo "cfedwh"
+        prefix="cfedwh"
+        . ~/cfedwh.env
+        percentage=90
+      ;;
+      cfebidemo)
+        echo "cfebidemo"
+        prefix="cfebidemo"
+        . ~/cfebidemo.env
+        percentage=90
+      ;;
+      *)
+        percentage=90
+#      echo "*** ERROR - Incorrect Parameter or No parameter supplied ***"
+#      echo "*** Error - Valid parameters are : staging, cfedwh cfebidemo ***"
+#      exit 1
+      ;;
+    esac
+
     export PATH=$ORACLE_HOME/bin:$PATH
     echo "PROCESSING ******************* $ORACLE_SID ****************************"
     HKLOGS=/backup/oracle/logs/TSPACE
@@ -39,23 +66,9 @@ do
     MAIL_SUBJ=" $HOSTNAME : $DATABASE TSPACE WARNING"
 #   MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
     MAIL_RECIPIENT="paul.hallam@cashflows.com"
-    case "$DATABASES" in
-          central)
-             percentage=80
-             ;;
-          accounts)
-             percentage=90
-             ;;
-          endpoint)
-             percentage=75
-             ;;
-          *)
-             percentage=90
-             ;;
-    esac
 
     CHECK=`sqlplus -s << EOF1
-      monitor_user/bSLVTZcMVPig_a2FYvC
+      monitor_user/M0n1tor
       set heading off
       set feedback off
       set recsep off
@@ -73,7 +86,7 @@ echo "CHECK $CHECK"
       echo $percentage
 
       sqlplus -s << EOF
-        monitor_user/bSLVTZcMVPig_a2FYvC
+        monitor_user/M0n1tor
         @/u01/maint/BACKUP/scripts/tablespacecheck.sql $LOGF
         exit;
 EOF
