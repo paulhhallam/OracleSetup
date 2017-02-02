@@ -2,7 +2,7 @@
 #
 # Create the Oracle home scripts directory structure
 #
-node["oracle"]["prod"]["homescripts"].each do |dirname|
+node["oracle"]["dbs"]["homescripts"].each do |dirname|
   directory dirname do
     mode "0775"
     owner "oracle"
@@ -13,7 +13,7 @@ end
 #
 # Create the /u01/maint directory structure
 #
-node["oracle"]["prod"]["cashdirs"].each do |dirname|
+node["oracle"]["dbs"]["cashdirs"].each do |dirname|
   directory dirname do
     mode "0775"
     owner "oracle"
@@ -24,7 +24,7 @@ end
 #
 # Create the "database" named directories under the relevant directories
 #
-node["oracle"]["prod"]["cashdbdirs"].each do |dirname|
+node["oracle"]["dbs"]["cashdbdirs"].each do |dirname|
   node["oracle"]["prod"]["databases"].each do |subdir|
     path_name = "#{dirname}/#{subdir}"
     directory path_name do
@@ -38,7 +38,7 @@ end
 #
 # Now create the subdirectories under the database names.
 #
-node["oracle"]["prod"]["cashdbsubdirs"].each do |data|
+node["oracle"]["dbs"]["cashdbsubdirs"].each do |data|
   node["oracle"]["prod"]["databases"].each do |dbdir|
     path_name="#{data["parent"]}/#{dbdir}/#{data["subdir"]}"
     directory path_name do
@@ -94,12 +94,11 @@ end
 # Restore the relevant tablespace check script 
 #
 cookbook_file "/u01/maint/scripts/TSdatabasecheck.sh" do
-  source "maint/scripts/TSdatabasecheck_#{node["hostname"]}.sh"
+  source "maint/HousekeepingAndOthers/TSdatabasecheck_#{node["hostname"]}.sh"
   owner 'oracle'
   group 'oinstall'
   mode '0775'
   action :create
 end
-
 
 

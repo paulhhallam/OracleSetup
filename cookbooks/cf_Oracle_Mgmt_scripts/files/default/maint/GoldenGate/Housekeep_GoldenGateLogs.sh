@@ -1,8 +1,13 @@
 #!/bin/bash
 #######################################################################
 # Script to cleanup oracle Golden Gate error log weekly.
-# Check GG_${DATABASE}_yyyy_mm_dd.log for issues.
+# Check /u01/maint/logs/GG_${DATABASE}_yyyy_mm_dd.log for issues.
 #
+# DWH
+# DWH
+# DWH
+# DWH
+# DWH
 #######################################################################
 #       Date Written: 16 September 2016  Author: P Hallam
 #######################################################################
@@ -13,9 +18,11 @@
 #
 #######################################################################
 
+shopt -s expand_aliases
 echo "cfedwh and cfebidemo and staging"
 prefix="cfedwh"
 . ~/cfedwh.env
+
 
 SCRIPT_DIR=/u01/maint/scripts/
 
@@ -25,7 +32,7 @@ LOG=${HKLOGS}/GG_housekeep_${Dstamp}.out
 MAIL_SUBJ=" $HOSTNAME Golden Gate LOG: "
 MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 
-trap "echo 'Housekeep_GoldenGateLogs for $DATABASE failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_GoldenGateLogs for $DATABASE failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
+trap "echo 'Housekeep_GoldenGateLogs failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_GoldenGateLogs failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 
 GG
 exec >> $LOG 2>&1
@@ -39,8 +46,8 @@ cat /dev/null > ggserr.log
 #
 echo "ggserr.log maintained" >> $LOG
 
-find $HKLOGS/ -name 'ggserr.log.*_bkp' -mtime +7 -exec rm {} \;
+find $HKLOGS/ -name 'ggserr.log.*' -mtime +7 -exec rm {} \;
 
-find ${HKLOGS}/ -name 'GG_housekeep_${DATABASE}_*.out' -mtime +7 -exec rm {} \;
+find ${HKLOGS}/ -name 'GG_housekeep_*.out' -mtime +7 -exec rm {} \;
 
 trap - INT TERM EXIT

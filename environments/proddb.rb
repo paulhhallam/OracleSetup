@@ -1,13 +1,13 @@
 #knife environmenmt list -w
-#knife environment from file prod.rb
+#knife environment from file proddb.rb
 #on node:
 # vi /etc/chef/client.rb
 #   ADD the line 
-#  environment "prod"
+#  environment "proddb"
 #
 
-name "prod"
-description "Production live database servers"
+name "proddb"
+description "Production Oracle database servers"
 cookbook "cf_Oracle_Mgmt_scripts", "= 0.1.0"
 
 # override_attributes({
