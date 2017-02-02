@@ -49,10 +49,24 @@ node["oracle"]["prod"]["cashdbsubdirs"].each do |data|
   end
 end
 #
-# Restore all the /u01/maint/scripts shell and sql files
+# Restore the housekeeping and maintenance shell and sql files to /u01/maint/scripts 
 #
 remote_directory "/u01/maint/scripts" do
-  source 'maint/scripts'
+  source 'maint/HousekeepingAndOthers'
+  files_mode '0775'
+  files_owner 'oracle'
+  files_group 'oinstall'
+  owner 'oracle'
+  group 'oinstall'
+  mode '0775'
+  action :create
+end
+
+#
+# Restore the backup and archivelog cleanup scripts to /u01/maint/scripts
+#
+remote_directory "/u01/maint/scripts" do
+  source 'maint/Backup'
   files_mode '0775'
   files_owner 'oracle'
   files_group 'oinstall'
@@ -76,14 +90,9 @@ remote_directory "/home/oracle/scripts/dba" do
   action :create
 end
 
-file "/u01/maint/scripts/OGG_processchecks.sh" do
-  content "maint/scripts/OGG_processchecks_#{node["hostname"]}.sh"
-  owner 'oracle'
-  group 'oinstall'
-  mode '0775'
-  action :create
-end
-
+#
+# Restore the relevant tablespace check script 
+#
 file "/u01/maint/scripts/TSdatabasecheck.sh" do
   content "maint/scripts/TSdatabasecheck_#{node["hostname"]}.sh"
   owner 'oracle'
@@ -92,11 +101,5 @@ file "/u01/maint/scripts/TSdatabasecheck.sh" do
   action :create
 end
 
-file "/u01/maint/scripts/Housekeep_GoldenGateLogs" do
-  content "maint/scripts/Housekeep_GoldenGateLogs_#{node["role"]}.sh"
-  owner 'oracle'
-  group 'oinstall'
-  mode '0775'
-  action :create
-end
+
 
