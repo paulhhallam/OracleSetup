@@ -29,8 +29,7 @@ do
 #
   DB_OWNER=$(ps -ef |grep $DATABASES |grep -v ASM |grep -v MGMTDB|grep ora_pmon| awk {'print $1'} )
   if [ $USER = $DB_OWNER ]; then
-#   MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
-    MAIL_RECIPIENT="paul.hallam@cashflows.com"
+    MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 
     case "$DATABASES" in
       dwcfstg)

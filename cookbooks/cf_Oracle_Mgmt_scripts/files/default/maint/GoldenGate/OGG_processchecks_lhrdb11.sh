@@ -15,7 +15,6 @@
 ################ SETTING UP VARIABLES #################
 #
 EMAIL_LIST="oraclealerts@cashflows.com, paul.hallam@cashflows.com"
-#EMAIL_LIST="paul.hallam@cashflows.com"
 host=`hostname`
 timeSuffix=`date +%F_%T`
 ggacounts=/backup/oracle/OGG/accounts

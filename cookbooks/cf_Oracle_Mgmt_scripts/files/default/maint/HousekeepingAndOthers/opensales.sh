@@ -13,7 +13,6 @@
 #
 . /home/oracle/endpoint.env
 MAIL_SUBJ="OPEN_SALES WARNING:"
-#MAIL_RECIPIENT="paul.hallam@cashflows.com"
 MAIL_RECIPIENT="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com,alex.tull@cashflows.com"
 
 RESP=`sqlplus -s <<!

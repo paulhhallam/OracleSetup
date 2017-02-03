@@ -37,8 +37,7 @@ do
     HKLOGS=/backup/oracle/logs/TSPACE
     LOGF=$HKLOGS/${DATABASES}/TS_${DATABASE}_${Dstamp}.txt
     MAIL_SUBJ=" $HOSTNAME : $DATABASE TSPACE WARNING"
-#   MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
-    MAIL_RECIPIENT="paul.hallam@cashflows.com"
+    MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
     case "$DATABASES" in
           central)
              percentage=80

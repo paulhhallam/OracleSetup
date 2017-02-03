@@ -16,7 +16,6 @@ MAIL_SUBJ="AUTO REPRESETMENT JOB STATUS:"
 LOG_DIR=/backup/oracle/logs/monitorlogs/central
 timeSuffix=`date +%F`
 LOGFILE=$LOG_DIR/autorepstatus_$timeSuffix.log
-#MAIL_RECIPIENT="ananth.shenoy@cashflows.com,majdi.mgaidia@cashflows.com"
 MAIL_RECIPIENT="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com,alex.tull@cashflows.com,majdi.mgaidia@cashflows.com"
 
 RUNNING=`sqlplus -s <<!

@@ -11,8 +11,7 @@
 shopt -s expand_aliases
 export Dstamp=`date +%F`
 
-#MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
-MAIL_RECIPIENT="paul.hallam@cashflows.com"
+MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 
 trap "echo 'Housekeep_Alertlogs failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_Alertlogs failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 

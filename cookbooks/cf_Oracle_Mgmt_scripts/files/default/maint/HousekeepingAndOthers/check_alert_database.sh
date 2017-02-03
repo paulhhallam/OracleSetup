@@ -20,8 +20,7 @@
 #######################################################################
 
 HOST_NAME=`hostname -a`
-#MAIL_RECIPIENT="ananth.shenoy@cashflows.com"
-MAIL_RECIPIENT="paul.hallam@cashflows.com"
+MAIL_RECIPIENT="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com"
 
 trap "echo 'CHECK_ALERT_DATABASE.SH failed on $HOSTNAME ' $HOSTNAME | mail -s 'CHECK_ALERT_DATABASE.SH failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 

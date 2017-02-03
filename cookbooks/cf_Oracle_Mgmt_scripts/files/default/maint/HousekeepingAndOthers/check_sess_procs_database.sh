@@ -49,7 +49,6 @@ export LOG_DIR=/backup/oracle/logs/monitorlogs/${DATABASE}
 LOG=${LOG_DIR}/sess_procs_log_${DATABASE}_${Dstamp}.out
 MAIL_SUBJ=" ${DATABASE} $HOSTNAME SESS_PROCS ALERT: "
 MAIL_RECIPIENT="ananth.shenoy@cashflows.com,database-monitors@cashflows.pagerduty.com,paul.hallam@cashflows.com"
-#MAIL_RECIPIENT="paul.hallam@cashflows.com"
 exec >> $LOG 2>&1
 
 HOST_NAME=`hostname -a`

@@ -14,8 +14,7 @@
 #
 ################ SETTING UP VARIABLES #################
 #
-EMAIL_LIST="ananth.shenoy@cashflows.com"
-#EMAIL_LIST="paul.hallam@cashflows.com"
+EMAIL_LIST="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com"
 host=`hostname`
 timeSuffix=`date +%F_%T`
 accountslogfile=/backup/oracle/logs/agent/stpagnt_acc_$timeSuffix.txt

@@ -36,7 +36,6 @@ find $2/maint/ -name '$1*.out' -mtime +7 -exec rm {} \;
 #
 #
 shopt -s expand_aliases
-#EMAIL_LIST="oraclealerts@cashflows.com, paul.hallam@cashflows.com"
 EMAIL_LIST="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
 host=`hostname`
 timeSuffix=`date +%F`

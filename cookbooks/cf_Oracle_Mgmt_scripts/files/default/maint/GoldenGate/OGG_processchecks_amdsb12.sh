@@ -15,5 +15,4 @@
 ################ SETTING UP VARIABLES #################
 #
 EMAIL_LIST="oraclealerts@cashflows.com, paul.hallam@cashflows.com"
-#EMAIL_LIST="paul.hallam@cashflows.com"
 # Empty file as GG not used here
