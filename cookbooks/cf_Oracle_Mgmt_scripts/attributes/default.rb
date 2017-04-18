@@ -1,17 +1,17 @@
 #
 #  Production database names
 #
-default["oracle"]["prod"]["databases"] = ["accounts","central","endpoint"]
+default["oracle"]["prod"]["databases"] = ["a","c","e"]
 
 #
 #  Data Wharehouse / BI database names
 #
-default["oracle"]["dwh"]["databases"] = ["cfedwh","cfebidemo","staging"]
+default["oracle"]["dwh"]["databases"] = ["dwh","bi","stg"]
 
 #
-# Oracle home Cashflows scripts directories
+# Oracle home scripts directories
 #
-default["oracle"]["prod"]["homescripts"] = [
+default["oracle"]["dbs"]["homescripts"] = [
 "/home/oracle/scripts",
 "/home/oracle/scripts/dba",
 "/home/oracle/scripts/changerequests"]
@@ -19,7 +19,7 @@ default["oracle"]["prod"]["homescripts"] = [
 #
 #  Directories used by Cashflows for backups, scripts and logs
 #
-default["oracle"]["prod"]["cashdirs"] = [
+default["oracle"]["dbs"]["dirs"] = [
 "/backup",
 "/backup/oracle",
 "/backup/oracle/backups",
@@ -50,7 +50,7 @@ default["oracle"]["prod"]["cashdirs"] = [
 #
 #  Directories ** in the lists above ** that will have subdirectories of the database names
 #
-default["oracle"]["prod"]["cashdbdirs"] = [
+default["oracle"]["dbs"]["dbdirs"] = [
 "/backup/oracle/OGG",
 "/backup/oracle/backups/rmanbackup",
 "/backup/oracle/datapumps",
@@ -71,5 +71,5 @@ default["oracle"]["prod"]["cashdbdirs"] = [
 #
 # Directories that will have a directory name followed by a database name followed by a subdirectory name
 #
-default["oracle"]["prod"]["cashdbsubdirs"] = ["parent"=>"/backup/oracle/backups/rmanbackup","subdir"=>"backupset"]
+default["oracle"]["dbs"]["dbsubdirs"] = ["parent"=>"/backup/oracle/backups/rmanbackup","subdir"=>"backupset"]
 

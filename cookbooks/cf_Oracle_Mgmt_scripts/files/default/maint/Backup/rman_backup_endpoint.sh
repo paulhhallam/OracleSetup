@@ -1,22 +1,8 @@
 #!/bin/bash
-#######################################################################
-#       Script to run daily RMAN backups to disk for endpoint database.
-#       Run from oracle crontab daily at 2am
-#       Check /u01/maint/logs/rmanlogs/rman_endpoint_backup_yyyy_mm_dd.log for issues.
-#       PREREQUISITES - ORACLE_SID entry MUST exist in /etc/oratab
-#######################################################################
-#       Date Written: 12 December 2011 Author: A Shenoy
-#######################################################################
-#       Change History
-#       Date            Author          Ver     Description
-#----------------------------------------------------------------------
-#       03/05/2016      A Shenoy        1.0     New script.
-#######################################################################
 
 . /home/oracle/endpoint.env
 
-MAIL_RECIPIENT="oraclealerts@cashflows.com, paul.hallam@cashflows.com"
-#MAIL_RECIPIENT="paul.hallam@cashflows.com"
+MAIL_RECIPIENT="paul"
 
 DATABASE=endpoint
 SCRIPT_DIR=/u01/maint/scripts

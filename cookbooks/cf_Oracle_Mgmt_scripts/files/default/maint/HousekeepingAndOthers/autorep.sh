@@ -1,22 +1,11 @@
 #!/bin/bash
-#######################################################################
-#       Script to change the settle_batch_id to NULL for the auto representments
-#       Run from oracle crontab at 9:30 PM.
-#######################################################################
-#       Change History
-#       Date            Author             Ver     Description
-#----------------------------------------------------------------------
-#       23/12/2016      Ananth Shenoy      1.0     New script.
-#######################################################################
-#
-################ SETTING UP VARIABLES #################
-#
+
 . /home/oracle/central.env
 MAIL_SUBJ="AUTO REPRESETMENT JOB STATUS:"
 LOG_DIR=/backup/oracle/logs/monitorlogs/central
 timeSuffix=`date +%F`
 LOGFILE=$LOG_DIR/autorepstatus_$timeSuffix.log
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com,alex.tull@cashflows.com,majdi.mgaidia@cashflows.com"
+MAIL_RECIPIENT=""
 
 RUNNING=`sqlplus -s <<!
 monitor_user/bSLVTZcMVPig_a2FYvC

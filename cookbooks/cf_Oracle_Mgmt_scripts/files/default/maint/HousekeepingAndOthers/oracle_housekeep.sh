@@ -1,25 +1,5 @@
 #!/bin/bash
-#######################################################################
-# Script to cleanup oracle logs daily.
-# Check ${DATABASE}/altlog_${DATABASE}_yyyy_mm_dd.log for issues.
-#
-#######################################################################
-#       Date Written: 16 September 2016  Author: P Hallam
-#######################################################################
-#       Change History
-#       Date            Author          Ver     Description
-#----------------------------------------------------------------------
-#       16/09/2016      P Hallam        1.0     New script.
-#
-#######################################################################
 
-
-#
-# -- PROCESS ASM
-#
-#
-# -- Get the asm owner and instance name
-#
 . ~/.bash_profile
 export PATH=/usr/local/bin:$PATH
 

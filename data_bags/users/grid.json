@@ -1,0 +1,9 @@
+{
+"id":"grid",
+"comment":"Grid owner",
+"home":"/home/grid",
+"shell":"/bin/bash",
+"password":"changeme",
+"group":"oinstall",
+"groups":["dba","asmdba","asmoper","asmadmin"]
+}

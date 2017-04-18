@@ -1,25 +1,8 @@
 #!/bin/bash
-#######################################################################
-# Script to run daily RMAN archive backups to disk for Accounts database.
-# Run from oracle crontab every hour at 45th minute
-# Check /u01/maint/logs/rmanlogs/rman_central_arch_backup_yyyy_mm_dd.log for issues.
-# PREREQUISITES - ORACLE_SID entry MUST exist in /etc/oratab
-#
-#######################################################################
-#       Date Written: 12 December 2012  Author: A Shenoy
-#######################################################################
-#       Change History
-#       Date            Author          Ver     Description
-#----------------------------------------------------------------------
-#       03/05/2016      A Shenoy        1.0     New script.
-#
-#######################################################################
-
 
 . /home/oracle/central.env
 
-MAIL_RECIPIENT="oraclealerts@cashflows.com, paul.hallam@cashflows.com"
-#MAIL_RECIPIENT="paul.hallam@cashflows.com"
+MAIL_RECIPIENT="paul"
 DATABASE=central
 SCRIPT_DIR=/u01/maint/scripts
 LOG_DIR=/u01/maint/logs/rmanlogs/central

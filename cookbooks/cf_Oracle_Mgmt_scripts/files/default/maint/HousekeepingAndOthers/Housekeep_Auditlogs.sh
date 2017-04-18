@@ -1,23 +1,8 @@
 #!/bin/bash
-#######################################################################
-# Script to cleanup oracle trace logs weekly.
-# Check GG_${DATABASE}_yyyy_mm_dd.log for issues.
-#
-#######################################################################
-#       Date Written: 16 September 2016  Author: P Hallam
-#######################################################################
-#       Change History
-#       Date            Author          Ver     Description
-#----------------------------------------------------------------------
-#       16/09/2016      P Hallam        1.0     New script.
-#
-#######################################################################
-
-#
 shopt -s expand_aliases
 export Dstamp=`date +%F`
 
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
+MAIL_RECIPIENT="paul"
 
 trap "echo 'Housekeep_Auditlogs failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_Auditlogs on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 
@@ -77,7 +62,7 @@ EOF1`
    tar -czf audits_${Dstamp}.tar.gz -T /tmp/AUDITASM.txt
    find $HKLOGS -name '*.aud' | xargs rm
    rm /tmp/AUDITASM.txt
-   find $HKLOGS/ -name '*' -mtime +90 -exec rm {} \;
+   find $HKLOGS/ -name '*.tar.gz' -mtime +90 -exec rm {} \;
 fi
 
 
@@ -132,7 +117,7 @@ EOF1`
     find $HKLOGS -name '*.aud' | xargs rm
     rm /tmp/AUDITDB.txt
 
-    find $HKLOGS/ -name '*' -mtime +90 -exec rm {} \;
+    find $HKLOGS/ -name '*.tar.gz' -mtime +90 -exec rm {} \;
   fi
 done
 

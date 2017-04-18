@@ -1,20 +1,5 @@
 #!/bin/bash -x
-#######################################################################
-#       Script to run check for Goldengate Process status.
-#
-#       Run from oracle crontab every 5 Minutes
-#
-#######################################################################
-#       Change History
-#       Date            Author             Ver     Description
-#----------------------------------------------------------------------
-#       27/03/2016      Ananth Shenoy      1.0     New script.
-#
-#######################################################################
-#
-################ SETTING UP VARIABLES #################
-#
-EMAIL_LIST="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com"
+EMAIL_LIST=""
 host=`hostname`
 timeSuffix=`date +%F_%T`
 #accountslogfile=/u01/maint/logs/agent/strtagnt_acc_$timeSuffix.txt

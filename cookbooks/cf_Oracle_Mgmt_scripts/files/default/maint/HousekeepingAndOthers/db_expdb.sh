@@ -1,19 +1,4 @@
 #!/bin/bash
-#######################################################################
-#       Script to run check for Backup schema everynight.
-#
-#       Run from oracle crontab every night
-#
-#############################################################################
-#       Change History
-#       Date            Author          Ver     Description
-#----------------------------------------------------------------------------
-#       15/01/2013      Ananth Shenoy   1.0     New script.
-#       22/11/2013      Ananth Shenoy   1.5     Added FLASHBACK_SCN for expdp
-#############################################################################
-#
-################ SETTING UP VARIABLES #################
-#
 case $1 in
     accounts)
       echo "accounts"
@@ -43,8 +28,7 @@ export ORAENV_ASK=NO
 . /usr/local/bin/oraenv
 
 
-EMAIL_LIST="ananth.shenoy@voice-commerce.com,paul.hallam@voice-commerce.com"
-#EMAIL_LIST="paul.hallam@voice-commerce.com"
+EMAIL_LIST="paul"
 export DATA_PUMP_DIR=/backup/oracle/exports/${DATABASE}
 timeSuffix=`date '+%F-%H_%M_%S'`
 

@@ -1,20 +1,6 @@
 #!/bin/bash
-#######################################################################
-#       Script to run check for Goldengate Process status.
-#
-#       Run from oracle crontab every 5 Minutes
-#
-#######################################################################
-#       Change History
-#       Date            Author             Ver     Description
-#----------------------------------------------------------------------
-#       27/03/2016      Ananth Shenoy      1.0     New script.
-#
-#######################################################################
-#
-################ SETTING UP VARIABLES #################
-#
-EMAIL_LIST="oraclealerts@cashflows.com"
+
+EMAIL_LIST="pp"
 host=`hostname`
 timeSuffix=`date +%F_%T`
 ggacounts=/backup/oracle/OGG/accounts

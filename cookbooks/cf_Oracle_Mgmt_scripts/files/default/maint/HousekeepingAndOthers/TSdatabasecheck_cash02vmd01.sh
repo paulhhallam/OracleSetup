@@ -1,22 +1,5 @@
 #!/bin/bash
-#######################################################################
-#       Script to run check for tablespace size.
-#
-#       Run from oracle crontab every 30 minutes
-#
-#######################################################################
-#       Change History
-#       Date            Author          Ver     Description
-#----------------------------------------------------------------------
-#       15/01/2013      Ananth Shenoy      1.0     New script.
-#       25/07/2016      Paul Hallam        2.0     Moved to ASMDB03
-#
-#######################################################################
-#
-################ SETTING UP VARIABLES #################
-#
-#
-#
+
 shopt -s expand_aliases
 shopt -s nocasematch
 export Dstamp=`date +%F_%T`
@@ -29,7 +12,7 @@ do
 #
   DB_OWNER=$(ps -ef |grep $DATABASES |grep -v ASM |grep -v MGMTDB|grep ora_pmon| awk {'print $1'} )
   if [ $USER = $DB_OWNER ]; then
-    MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
+    MAIL_RECIPIENT="paul"
 
     case "$DATABASES" in
       dwcfstg)
@@ -61,7 +44,7 @@ do
     export PATH=$ORACLE_HOME/bin:$PATH
     echo "PROCESSING ******************* $ORACLE_SID ****************************"
     HKLOGS=/backup/oracle/logs/TSPACE
-    LOGF=$HKLOGS/${DATABASES}/TS_${DATABASE}_${Dstamp}.txt
+    LOGF=$HKLOGS/${DATABASES}/TS_${DATABASES}_${Dstamp}.txt
     MAIL_SUBJ=" $HOSTNAME : $DATABASE TSPACE WARNING"
 #   MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
     MAIL_RECIPIENT="paul.hallam@cashflows.com"
@@ -96,9 +79,9 @@ EOF
 #
 # Remove all files over two weeks old
 #
-    find $HKLOGS/${DATABASES} -name '*' -mtime +14 -exec rm {} \;
+    find $HKLOGS/${DATABASES} -name 'TS_*.txt' -mtime +14 -exec rm {} \;
   fi
 done
 
-find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
+find $HKLOGS/ -name 'tablespacecheck.log' -mtime +14 -exec rm {} \;
 

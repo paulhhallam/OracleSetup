@@ -1,18 +1,5 @@
 #!/bin/bash
-#######################################################################
-# Script to monitor alert log for every 10 mins.
-# Run from oracle crontab every 5 minutes.
-# Check altlog_${DATABASE}_yyyy_mm_dd.log for issues.
-#
-#######################################################################
-#       Date Written: 11 December 2012  Author: A Shenoy
-#######################################################################
-#       Change History
-#       Date            Author          Ver     Description
-#----------------------------------------------------------------------
-#       02/07/2016    A Shenoy        1.0     New script.
-#
-#######################################################################
+
 
 case $1 in
     accounts)
@@ -48,7 +35,7 @@ export Dstamp=`date +%F_%T`
 export LOG_DIR=/backup/oracle/logs/monitorlogs/${DATABASE}
 LOG=${LOG_DIR}/sess_procs_log_${DATABASE}_${Dstamp}.out
 MAIL_SUBJ=" ${DATABASE} $HOSTNAME SESS_PROCS ALERT: "
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com,database-monitors@cashflows.pagerduty.com,paul.hallam@cashflows.com"
+MAIL_RECIPIENT=""
 exec >> $LOG 2>&1
 
 HOST_NAME=`hostname -a`

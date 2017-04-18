@@ -16,8 +16,8 @@ end
 #
 # Restore the relevant GoldenGate process check script
 #
-cookbook_file "/u01/maint/scripts/OGG_processchecks.sh" do
-  source "maint/GoldenGate/OGG_processchecks_#{node["hostname"]}.sh"
+cookbook_file "/u01/maint/scripts/Housekeep_GoldenGateLogs.sh" do
+  source "maint/GoldenGate/Housekeep_GoldenGateLogs_DWH.sh"
   owner 'oracle'
   group 'oinstall'
   mode '0775'

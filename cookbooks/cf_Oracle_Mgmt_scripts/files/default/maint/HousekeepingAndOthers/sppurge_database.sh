@@ -1,15 +1,4 @@
 #!/bin/bash
-#######################################################################
-#       Script to clean up the statspack reports.
-#######################################################################
-#       Change History
-#       Date            Author             Ver     Description
-#----------------------------------------------------------------------
-#       04/10/2016      Paul Hallam        1.0     New script.
-#######################################################################
-#
-################ SETTING UP VARIABLES #################
-#
 
 case $1 in
   accounts)
@@ -38,7 +27,7 @@ DATABASE=$1
 SCRIPT_DIR=/u01/maint/scripts/
 
 MAIL_SUBJ=" $HOSTNAME ${DATABASE} STATSPACK CLEANUP COMPLETED: "
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
+MAIL_RECIPIENT=""
 LOG=/backup/oracle/logs/SPpurge/SPpurge_${DATABASE}.log
 cd /backup/oracle/logs/SPpurge
 

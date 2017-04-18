@@ -8,7 +8,7 @@
 # BUT the problem here is that the instance number does not have to be the same for 
 # all instances on a host.
 #
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
+MAIL_RECIPIENT="paul"
 
 trap "echo 'Housekeep_Listener_logs failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_Listener_logs failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 
@@ -44,7 +44,6 @@ if [ $USER = $ASM_OWNER ]; then
    HKLOGS=/backup/oracle/logs/LSN/ASM/
    echo "BACKUPS DIR = $HKLOGS"
    test -d $HKLOGS || mkdir -p $HKLOGS
-   find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
 #
 # --  process any listener log files
 #
@@ -69,7 +68,7 @@ if [ $USER = $ASM_OWNER ]; then
          cp $LSNR_LOG_DIR/trace/$LSNR_LOG_NAME.log $HKLOGS/$LSNR_LOG_NAME.log_$Dstamp
 #        cp $LSNR_LOG_DIR/trace/$LSNR_LOG_NAME.log $HKLOGS/
          cat /dev/null > $LSNR_LOG_NAME.log
-         find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
+         find $HKLOGS/ -name '*.log_*' -mtime +14 -exec rm {} \;
       fi
    done
 fi
@@ -120,7 +119,7 @@ do
 # --Save the listener log file in backuplogs and then clean it out
         cp $LSNR_LOG_DIR/trace/$LSNR_LOG_NAME.log $HKLOGS/$LSNR_LOG_NAME.log_$Dstamp
         cat /dev/null > $LSNR_LOG_NAME.log
-        find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
+        find $HKLOGS/ -name '*.log_*' -mtime +14 -exec rm {} \;
       fi
     done
   fi

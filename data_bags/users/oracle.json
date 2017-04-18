@@ -1,0 +1,9 @@
+{
+"id":"oracle",
+"comment":"Oracle user",
+"home":"/home/oracle",
+"shell":"/bin/bash",
+"password":"changeme",
+"group":"oinstall",
+"groups":["dba","asmdba","asmoper","oper"]
+}

@@ -1,20 +1,7 @@
 #!/bin/bash -x
-#######################################################################
-#       Script to send merchant count every morning.
-#       Run from oracle crontab once everyday.
-#######################################################################
-#       Change History
-#       Date            Author             Ver     Description
-#----------------------------------------------------------------------
-#       05/12/2014      Ananth Shenoy      1.0     New script.
-#######################################################################
-#
-################ SETTING UP VARIABLES #################
-#
 . /home/oracle/central.env
 MAIL_SUBJ="Daily_Trans_Stats"
-#MAIL_RECIPIENT="ananth.shenoy@cashflows.com,ian.savage@cashflows.com,daniel.bons@cashflows.com,elizabeth.barnes@voice-commerce.com"
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com"
+MAIL_RECIPIENT="pp"
 LOG_DIR=/backup/oracle/logs/trans_stats
 spool_file=TRANS_`date +%d_%b_%Y`.txt
 

@@ -1,17 +1,8 @@
 #!/bin/bash
-#
-# This procedure relies on the instance being in /etc/oratab.
-# For clustered instances the sid must be in oratab, not the global instance name.
-# In theory we could use the global name and add the instanbce number as used by ASM 
-# BUT the problem here is that the instance number does not have to be the same for 
-# all instances on a host.
-#
-# http://www.dbaexpert.com/blog/rotate-all-the-log-files-in-the-rac-environment/
-#
 shopt -s expand_aliases
 export Dstamp=`date +%F`
 
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com, paul.hallam@cashflows.com"
+MAIL_RECIPIENT="paul"
 
 trap "echo 'Housekeep_Alertlogs failed on $HOSTNAME ' $HOSTNAME | mail -s 'Housekeep_Alertlogs failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 
@@ -68,7 +59,8 @@ EOF1`
 #
 # Remove all files over two weeks old
 #
-    find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
+    find $HKLOGS/ -name 'alert*' -mtime +14 -exec rm {} \;
+    find $HKLOGS/ -name '*.tar.gz' -mtime +14 -exec rm {} \;
 fi
 
 #
@@ -118,8 +110,8 @@ EOF1`
 #
 # Remove all files over two weeks old
 #
-    find $HKLOGS/ -name '*' -mtime +14 -exec rm {} \;
-
+    find $HKLOGS/ -name 'alert*' -mtime +14 -exec rm {} \;
+    find $HKLOGS/ -name '*.tar.gz' -mtime +14 -exec rm {} \;
   fi
 #
 done

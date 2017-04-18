@@ -1,26 +1,8 @@
 #!/bin/bash
-#######################################################################
-# Script to monitor alert log for every 10 mins.
-# Run from oracle crontab every 5 minutes.
-# Check /backup/oracle/logs/ALOG/ for issues.
-#
-# PREREQUISITES 
-# PREREQUISITES 
-# PREREQUISITES - ORACLE_SID entry MUST exist in /etc/oratab
-#
-#######################################################################
-#       Date Written: 11 December 2012  Author: A Shenoy
-#######################################################################
-#       Change History
-#       Date            Author          Ver     Description
-#----------------------------------------------------------------------
-#       11/12/2012      A Shenoy        1.0     New script.
-#       25/07/2016      Paul Hallam     2.0     Moved to ASMDB03
-#
-#######################################################################
+
 
 HOST_NAME=`hostname -a`
-MAIL_RECIPIENT="ananth.shenoy@cashflows.com,paul.hallam@cashflows.com"
+MAIL_RECIPIENT=""
 
 trap "echo 'CHECK_ALERT_DATABASE.SH failed on $HOSTNAME ' $HOSTNAME | mail -s 'CHECK_ALERT_DATABASE.SH failed on $HOSTNAME ' $MAIL_RECIPIENT" INT TERM EXIT
 
